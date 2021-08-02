@@ -6,7 +6,6 @@ CXXFLAGS=\
 -Isrc/libmodplug \
 -Isrc \
 -DMODPLUG_BASIC_SUPPORT \
--sUSE_SDL=2 \
 -std=c++03 \
 
 CFLAGS=$(CXXFLAGS)
@@ -16,7 +15,7 @@ objects   += $(patsubst src/%,build/%, $(patsubst %.cpp,%.bc, $(wildcard src/*.c
 
 sdlaudio: $(build) $(objects)
 	EMCC_DEBUG=1 $(CXX) $(objects) -o $(build)/sdlaudio.bc
-	EMCC_DEBUG=1 $(CXX) --closure 0 $(build)/sdlaudio.bc -o $(build)/sdlaudio.js
+	EMCC_DEBUG=1 $(CXX) --closure 0 $(build)/sdlaudio.bc -o $(build)/sdlaudio.js -s USE_SDL=2
 
 $(build)/%.bc: src/%.cpp
 	EMCC_DEBUG=1 $(CXX) $(CXXFLAGS) -c $< -o $@
