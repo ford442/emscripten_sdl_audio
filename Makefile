@@ -6,6 +6,7 @@ CXXFLAGS=\
 -Isrc/libmodplug \
 -Isrc \
 -DMODPLUG_BASIC_SUPPORT \
+-s USE_SDL=2
 
 CFLAGS=$(CXXFLAGS)
 
